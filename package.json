@@ -1,0 +1,14 @@
+{
+  "name": "docker_node",
+  "version": "1.0.0",
+  "description": "docker node app",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "main": "app.js",
+  "author": "akiosterr",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
