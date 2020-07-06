@@ -3,12 +3,12 @@ FROM node:12
 # Create app directory
 WORKDIR $HOME/akiosdev/app
 
-COPY package.json yarn.lock ./
+COPY package*.json ./
 
-RUN yarn
+RUN npm install
 
 COPY . .
 
 EXPOSE 2020
-CMD [ "yarn", "start" ]
+CMD [ "node", "app.js" ]
 

@@ -1,13 +1,26 @@
 {
-  "name": "docker_node",
+  "name": "docker_app",
   "version": "1.0.0",
-  "description": "docker node app",
-  "scripts": {
-    "start": "node app.js"
-  },
+  "description": "docker node bp",
   "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akiosTerr/docker_app.git"
+  },
+  "keywords": [
+    "docker",
+    "node"
+  ],
   "author": "akiosterr",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/akiosTerr/docker_app/issues"
+  },
+  "homepage": "https://github.com/akiosTerr/docker_app#readme",
   "dependencies": {
     "express": "^4.17.1"
   }
