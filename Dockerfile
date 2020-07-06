@@ -1,15 +1,14 @@
 FROM node:12
 
 # Create app directory
-WORKDIR /home/akiosdev/app
+WORKDIR $HOME/akiosdev/app
 
-COPY package*.json ./
+COPY package.json yarn.lock ./
 
 RUN yarn
 
 COPY . .
 
 EXPOSE 2020
-
-CMD [ "node", "app.js" ]
+CMD [ "yarn", "start" ]
 
