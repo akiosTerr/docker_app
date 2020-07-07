@@ -2,7 +2,7 @@
 
 const express = require('express');
 const PORT = 2020;
-const HOST = '0.0.0.0';
+const HOST = 'stereoblinddev.com';
 
 // App
 const app = express();

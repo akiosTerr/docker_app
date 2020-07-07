@@ -1,6 +1,5 @@
 FROM node:alpine
 
-# Create app directory
 WORKDIR $HOME/akiosdev/app
 
 COPY package*.json ./
