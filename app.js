@@ -1,13 +1,13 @@
 'use strict';
 
 const express = require('express');
-const PORT = 2020;
-const HOST = 'stereoblinddev.com';
+const PORT = 80;
+const HOST = '162.214.104.227';
 
 // App
 const app = express();
 app.get('/', (req, res) => {
-	res.send('Hello World');
+	res.send('HELLO FUCKING WORLD');
 });
 
 app.listen(PORT, HOST);
