@@ -9,5 +9,5 @@ RUN npm install
 COPY . .
 
 EXPOSE 2020
-CMD [ "node", "app.js" ]
+CMD [ "npm", "start" ]
 
