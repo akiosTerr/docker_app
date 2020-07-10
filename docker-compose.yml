@@ -1,8 +1,10 @@
+version: "3.8"
+
 services:
     app:
         build: .
         command: npm start
-        port:
+        ports:
             - "4000:4000"
         volumes: 
             - .:/$HOME/akiosdev/app
