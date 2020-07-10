@@ -22,11 +22,13 @@ var corsOptions = {
 // App
 const app = express();
 
+app.use(cors(corsOptions));
+
 app.get('/', (req, res) => {
 	res.send('HELLO FUCKING WORLD');
 });
 
-app.get('/api', cors(corsOptions), (req, res) => {
+app.get('/api', (req, res) => {
 	var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 	accessCount++;
 	console.log(ip);
