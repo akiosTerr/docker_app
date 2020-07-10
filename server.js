@@ -8,16 +8,28 @@ const HOST = process.env.HOST;
 
 let accessCount = 0;
 
+var whitelist = ['http://stereoblinddev.com', 'https://stereoblinddev.com'];
+var corsOptions = {
+	origin: function (origin, callback) {
+		if (whitelist.indexOf(origin) !== -1) {
+			callback(null, true);
+		} else {
+			callback(new Error('Not allowed by CORS'));
+		}
+	},
+};
+
 // App
 const app = express();
-app.use(cors());
 
 app.get('/', (req, res) => {
 	res.send('HELLO FUCKING WORLD');
 });
 
-app.get('/api', (req, res) => {
+app.get('/api', cors(corsOptions), (req, res) => {
+	var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 	accessCount++;
+	console.log(ip);
 	res.send('api check:' + accessCount);
 });
 
