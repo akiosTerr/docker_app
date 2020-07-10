@@ -27,7 +27,9 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api', cors(corsOptions), (req, res) => {
+	var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 	accessCount++;
+	console.log(ip);
 	res.send('api check:' + accessCount);
 });
 
