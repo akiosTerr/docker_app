@@ -2,14 +2,18 @@
 
 const express = require('express');
 const cors = require('cors');
-const dotenv = require('dotenv').config();
+const https = require('https');
+const fs = require('fs');
+
+require('dotenv').config();
 const PORT = process.env.PORT;
 const HOST = process.env.HOST;
+const SSL = process.env.PASS_SSL;
 
 let accessCount = 0;
 
-var whitelist = [`http://${HOST}:3000`];
-var corsOptions = {
+const whitelist = [`http://${HOST}:3000`, `https://${HOST}:3000`];
+const corsOptions = {
 	origin: function (origin, callback) {
 		if (whitelist.indexOf(origin) !== -1) {
 			console.log(origin);
@@ -20,12 +24,22 @@ var corsOptions = {
 	},
 };
 
+const key = fs.readFileSync('./ssl_cert/key.pem');
+// const fkey = String(key).replace(/\\n/gm, '\n');
+
+const sslOptions = {
+	key,
+	cert: fs.readFileSync('./ssl_cert/server.crt'),
+	passphrase: SSL,
+};
+
 // App
 const app = express();
 
 app.use(cors(corsOptions));
 
 app.get('/', (req, res) => {
+	console.log('hello');
 	res.send('HELLO FUCKING WORLD');
 });
 
@@ -36,5 +50,6 @@ app.get('/api', (req, res) => {
 	res.send('api check:' + accessCount);
 });
 
-app.listen(PORT, HOST);
-console.log(`Running on http://${HOST}:${PORT}`);
+https.createServer(sslOptions, app).listen(PORT, HOST);
+
+console.log(`Running on https://${HOST}:${PORT}`);
