@@ -3,25 +3,26 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv').config();
-const PORT = process.env.PORT;
-const HOST = process.env.HOST;
+const port = process.env.PORT;
+const host = process.env.HOST;
 
 let accessCount = 0;
 
 var whitelist = ['http://stereoblinddev.com', 'https://stereoblinddev.com'];
 var corsOptions = {
 	origin: function (origin, callback) {
+		console.log(origin);
 		if (whitelist.indexOf(origin) !== -1) {
 			callback(null, true);
 		} else {
-			callback('Not allowed by CORS');
+			callback('Not allowed');
 		}
 	},
 };
 
 // App
 const app = express();
-
+console.log(`PORT:${port}HOST:${host}`)
 app.use(cors(corsOptions));
 
 app.get('/', (req, res) => {
@@ -35,5 +36,5 @@ app.get('/api', (req, res) => {
 	res.send('api check:' + accessCount);
 });
 
-app.listen(PORT, HOST);
-console.log(`Running on http://${HOST}:${PORT}`);
+app.listen(port, host);
+console.log(`Running on http://${host}:${port}`);
