@@ -1,12 +1,12 @@
 version: "3.8"
 
 services:
-    app:
+   node:
         env_file:
             - .env 
         build: . 
         command: npm start
         ports:
-            - "8080:8080"
+            - "162.214.104.227:80:80"
         volumes: 
             - .:/$HOME/akiosdev/app

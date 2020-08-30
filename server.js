@@ -28,7 +28,7 @@ console.log(`PORT:${port} HOST:${host}`);
 app.use(cors());
 
 app.get('/', (req, res) => {
-	res.send('Testing API');
+	res.send('Testing API 123');
 });
 
 app.get('/api', (req, res) => {
